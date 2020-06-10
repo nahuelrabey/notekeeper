@@ -1,10 +1,2 @@
-const mongoose = require("mongoose");
-class NoteActionBase{
-    static check_db(req, res, next){
-        // check health of database
-        // should be in another component
-        mongoose.connection.on('disconected', (err) => {
-            
-        })
-    }
-}
+const asyncHandler = require("express-async-handler");
+const NoteModel = require("../Domain/NoteModel");
