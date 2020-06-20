@@ -3,11 +3,11 @@ const NoteModel = require("../Domain/NoteModel");
 
 const noteActions = new (function () {
   this.postNote = asyncHandler(async (req, res, next) => {
-    NoteModel.create(req.body, function (err, doc) {
-      if (err) console.log(err);
-      console.log(doc);
-    });
-    res.send(response);
+    
+    const newNote = new NoteModel(req.body);
+    const doc = await newNote.save()
+    res.send(doc);
+
   });
 
   this.putNote = asyncHandler(async (req, res, next) => {
